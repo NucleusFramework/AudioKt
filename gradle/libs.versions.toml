@@ -6,8 +6,7 @@ maven-publish = "0.34.0"
 kotlinx-coroutines = "1.10.2"
 compose = "1.9.3"
 androidx-activityCompose = "1.10.1"
-gobley = "0.3.7"
-jna = "5.18.1"
+core-runtime = "2.0.0-alpha-202607120006"
 
 [libraries]
 
@@ -16,7 +15,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-jna = { module = "net.java.dev.jna:jna", version.ref = "jna" }
+core-runtime = { module = "dev.nucleusframework:nucleus.core-runtime", version.ref = "core-runtime" }
 
 [plugins]
 
@@ -27,7 +26,3 @@ maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publ
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlinAtomicfu = { id = "org.jetbrains.kotlin.plugin.atomicfu", version.ref = "kotlin" }
-gobleyCargo = { id = "dev.gobley.cargo", version.ref = "gobley" }
-gobleyRust = { id = "dev.gobley.rust", version.ref = "gobley" }
-gobleyUniffi = { id = "dev.gobley.uniffi", version.ref = "gobley" }

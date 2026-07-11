@@ -1,0 +1,44 @@
+name: Pre-merge smoke
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Build the host native only (the per-platform build scripts handle
+        # cross-arch in CI via build-natives.yaml). compileKotlin + the sample
+        # JVM target is enough to catch Kotlin/JNI wiring regressions.
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Linux audio dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libasound2-dev pkg-config
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Make Gradle wrapper executable
+        if: runner.os != 'Windows'
+        run: chmod +x gradlew
+
+      - name: Compile Kotlin (builds host native via processResources)
+        run: ./gradlew :rodio:compileKotlin --no-configuration-cache
