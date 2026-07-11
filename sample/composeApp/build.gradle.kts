@@ -18,7 +18,6 @@ kotlin {
             implementation(compose.material)
             implementation(libs.kotlinx.coroutines.core)
             implementation(project(":rodio"))
-            implementation(project(":souvlaki"))
         }
 
         jvmMain.dependencies {

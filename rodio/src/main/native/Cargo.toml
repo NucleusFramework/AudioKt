@@ -1,0 +1,29 @@
+[package]
+name = "nucleus_rodio"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "nucleus_rodio"
+crate-type = ["cdylib", "staticlib"]
+path = "src/lib.rs"
+
+[dependencies]
+rodio = "0.21.1"
+reqwest = { version = "0.12.28", default-features = false, features = ["blocking", "rustls-tls-native-roots", "rustls-tls-webpki-roots"] }
+thiserror = "2.0.11"
+hls_m3u8 = "0.5.1"
+jni = "0.21"
+once_cell = "1.20"
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "debuginfo"
+incremental = false
+
+[profile.dev]
+panic = "abort"

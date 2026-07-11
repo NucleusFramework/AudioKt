@@ -39,6 +39,9 @@ obj/
 **/target/
 *.rs.bk
 
+# Native libraries (built on CI via build-natives.yaml, not committed)
+**/src/main/resources/nucleus/native/
+
 # OS
 .DS_Store
 
