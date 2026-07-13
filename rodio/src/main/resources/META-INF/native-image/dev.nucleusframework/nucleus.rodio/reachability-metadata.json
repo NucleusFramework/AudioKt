@@ -1,0 +1,49 @@
+{
+    "reflection": [
+        {
+            "type": "dev.nucleusframework.rodio.internal.NativeRodioBridge",
+            "jniAccessible": true,
+            "methods": [
+                { "name": "nativeCreatePlayer", "parameterTypes": [] },
+                { "name": "nativeCreatePlayerWithBufferSizeFrames", "parameterTypes": ["int"] },
+                { "name": "nativeDestroyPlayer", "parameterTypes": ["long"] },
+                { "name": "nativeSetCallback", "parameterTypes": ["long", "dev.nucleusframework.rodio.internal.NativePlaybackCallbackRaw"] },
+                { "name": "nativeClearCallback", "parameterTypes": ["long"] },
+                { "name": "nativePlayFile", "parameterTypes": ["long", "java.lang.String", "boolean"] },
+                { "name": "nativePlayUrl", "parameterTypes": ["long", "java.lang.String", "boolean"] },
+                { "name": "nativePlayRadio", "parameterTypes": ["long", "java.lang.String"] },
+                { "name": "nativePlaySine", "parameterTypes": ["long", "float", "long"] },
+                { "name": "nativePlay", "parameterTypes": ["long"] },
+                { "name": "nativePause", "parameterTypes": ["long"] },
+                { "name": "nativeStop", "parameterTypes": ["long"] },
+                { "name": "nativeClear", "parameterTypes": ["long"] },
+                { "name": "nativeIsPaused", "parameterTypes": ["long"] },
+                { "name": "nativeIsEmpty", "parameterTypes": ["long"] },
+                { "name": "nativeGetPositionMs", "parameterTypes": ["long"] },
+                { "name": "nativeSeekPositionMs", "parameterTypes": ["long", "long"] },
+                { "name": "nativeGetDurationMs", "parameterTypes": ["long"] },
+                { "name": "nativeIsSeekable", "parameterTypes": ["long"] },
+                { "name": "nativeSetVolume", "parameterTypes": ["long", "float"] },
+                { "name": "nativeHttpSetAllowInvalidCerts", "parameterTypes": ["boolean"] },
+                { "name": "nativeHttpAddRootCertPem", "parameterTypes": ["java.lang.String"] },
+                { "name": "nativeHttpClearRootCerts", "parameterTypes": [] }
+            ]
+        },
+        {
+            "type": "dev.nucleusframework.rodio.internal.NativePlaybackCallbackRaw",
+            "jniAccessible": true,
+            "methods": [
+                { "name": "onEvent", "parameterTypes": ["int"] },
+                { "name": "onMetadata", "parameterTypes": ["java.lang.String", "java.lang.String"] },
+                { "name": "onError", "parameterTypes": ["java.lang.String"] }
+            ]
+        },
+        {
+            "type": "dev.nucleusframework.rodio.RodioException",
+            "jniAccessible": true,
+            "methods": [
+                { "name": "<init>", "parameterTypes": ["java.lang.String"] }
+            ]
+        }
+    ]
+}

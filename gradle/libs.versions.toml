@@ -6,7 +6,8 @@ maven-publish = "0.34.0"
 kotlinx-coroutines = "1.10.2"
 compose = "1.9.3"
 androidx-activityCompose = "1.10.1"
-core-runtime = "2.0.0-alpha-202607120006"
+nucleus = "2.0.0-alpha-202607130649"
+filekit = "0.14.2"
 
 [libraries]
 
@@ -15,7 +16,11 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-core-runtime = { module = "dev.nucleusframework:nucleus.core-runtime", version.ref = "core-runtime" }
+core-runtime = { module = "dev.nucleusframework:nucleus.core-runtime", version.ref = "nucleus" }
+nucleus-application = { module = "dev.nucleusframework:nucleus.nucleus-application", version.ref = "nucleus" }
+decorated-window-tao = { module = "dev.nucleusframework:nucleus.decorated-window-tao", version.ref = "nucleus" }
+decorated-window-material2 = { module = "dev.nucleusframework:nucleus.decorated-window-material2", version.ref = "nucleus" }
+filekit-dialogs = { module = "io.github.vinceglb:filekit-dialogs", version.ref = "filekit" }
 
 [plugins]
 
@@ -26,3 +31,4 @@ maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publ
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
+nucleus = { id = "dev.nucleusframework", version.ref = "nucleus" }
