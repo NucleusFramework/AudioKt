@@ -143,18 +143,23 @@ class RodioPlayer(
     }
 }
 
-/** Adapts the public [PlaybackCallback] (enum-typed) to the raw JNI interface. */
-private fun PlaybackCallback.toRaw(): NativePlaybackCallbackRaw =
-    object : NativePlaybackCallbackRaw {
-        override fun onEvent(event: Int) {
-            this@toRaw.onEvent(PlaybackEvent.fromInt(event))
-        }
+/**
+ * Adapts the public [PlaybackCallback] (enum-typed) to the raw JNI interface.
+ *
+ * Named class on purpose: the native side resolves the callback methods with
+ * `GetObjectClass` + `GetMethodID` on the CONCRETE class, so it must be
+ * declared `jniAccessible` in the GraalVM reachability metadata — an anonymous
+ * object's compiler-generated name (`RodioPlayerKt$toRaw$1`) cannot be
+ * registered reliably, and native-image strips its method lookups.
+ */
+internal class RawPlaybackCallbackAdapter(
+    private val delegate: PlaybackCallback,
+) : NativePlaybackCallbackRaw {
+    override fun onEvent(event: Int) = delegate.onEvent(PlaybackEvent.fromInt(event))
 
-        override fun onMetadata(key: String, value: String) {
-            this@toRaw.onMetadata(key, value)
-        }
+    override fun onMetadata(key: String, value: String) = delegate.onMetadata(key, value)
 
-        override fun onError(message: String) {
-            this@toRaw.onError(message)
-        }
-    }
+    override fun onError(message: String) = delegate.onError(message)
+}
+
+private fun PlaybackCallback.toRaw(): NativePlaybackCallbackRaw = RawPlaybackCallbackAdapter(this)

@@ -39,6 +39,15 @@
             ]
         },
         {
+            "type": "dev.nucleusframework.rodio.RawPlaybackCallbackAdapter",
+            "jniAccessible": true,
+            "methods": [
+                { "name": "onEvent", "parameterTypes": ["int"] },
+                { "name": "onMetadata", "parameterTypes": ["java.lang.String", "java.lang.String"] },
+                { "name": "onError", "parameterTypes": ["java.lang.String"] }
+            ]
+        },
+        {
             "type": "dev.nucleusframework.rodio.RodioException",
             "jniAccessible": true,
             "methods": [
